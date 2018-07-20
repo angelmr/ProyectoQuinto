@@ -5,8 +5,8 @@
  */
 package vistas;
 
-import entidades.Rol;
-import funciones.FRol;
+import entidades.Periodo;
+import funciones.FPeriodo;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -15,35 +15,36 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author USER
  */
-public class FrmListaRol extends javax.swing.JFrame {
+public class FrmListaPeriodo extends javax.swing.JFrame {
 
     /**
      * Creates new form FrmListaRol
      */
-    public FrmListaRol(){
+    public FrmListaPeriodo(){
         initComponents();
         this.setLocationRelativeTo(null); 
     }
     
-    public void ListarRol(){
-        DefaultTableModel modelo = (DefaultTableModel) TablaListarRoles.getModel();               
-        ArrayList<Rol> lista = new ArrayList<>();
+    public void ListarPeriodo(){
+        DefaultTableModel modelo = (DefaultTableModel) TablaListarPeriodos.getModel();
+        ArrayList<Periodo> lista = new ArrayList<>();
         try {
-            FRol frol = new FRol();
-            lista = frol.ObtenerRoles(); 
+            FPeriodo fperiodo = new FPeriodo();
+            lista = fperiodo.ObtenerPeriodos();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage(),"Error", 
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error",
                     JOptionPane.ERROR_MESSAGE);
-        }   
-            int filas=TablaListarRoles.getRowCount()-1;
+        }
+        int filas=TablaListarPeriodos.getRowCount()-1;
             for(int i=filas; i>=0; i--){
                 modelo.removeRow(modelo.getRowCount()-1);
             } 
-            for(Rol r : lista){      
-            modelo.addRow(new Object[]{ r.getCodigo(),r.getNombre(),r.getDescripcion(),
-            r.getEstado(),r.getCodigo_modulo()});                              
-    }    
-            
+        for (Periodo p : lista) {
+            modelo.addRow(new Object[]{p.getCodigo(), p.getNombre(), p.getFecha_inicio(),
+                p.getFecha_fin(), p.getTipo(), p.getObservaciones(), p.getCodigo_sicoa(), p.getEstado()});
+        }
+
+    
   }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -54,43 +55,41 @@ public class FrmListaRol extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        TablaListarRoles = new javax.swing.JTable();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        TablaListarPeriodos = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Lista de Roles");
+        setTitle("Lista de Periodos Academicos");
 
-        TablaListarRoles.setModel(new javax.swing.table.DefaultTableModel(
+        TablaListarPeriodos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Codigo", "Nombre", "Descripcion", "Estado", "Codigo modulo"
+                "Codigo", "Nombre", "Fecha inicio", "Fecha fin", "Tipo", "Observaciones", "Codigo sicoa", "Estado"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(TablaListarRoles);
-        TablaListarRoles.getAccessibleContext().setAccessibleName("");
-        TablaListarRoles.getAccessibleContext().setAccessibleDescription("");
+        jScrollPane4.setViewportView(TablaListarPeriodos);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 916, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 995, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 344, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -113,26 +112,27 @@ public class FrmListaRol extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmListaRol.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmListaPeriodo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmListaRol.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmListaPeriodo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmListaRol.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmListaPeriodo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmListaRol.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmListaPeriodo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmListaRol().setVisible(true);
+                new FrmListaPeriodo().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable TablaListarRoles;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable TablaListarPeriodos;
+    private javax.swing.JScrollPane jScrollPane4;
     // End of variables declaration//GEN-END:variables
 }

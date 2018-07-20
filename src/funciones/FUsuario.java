@@ -128,7 +128,9 @@ public class FUsuario implements Serializable {
         boolean eje = false;
         try {
             ArrayList<Parametro> lstP = new ArrayList<Parametro>();
-            String sql = "select * from actividades.felimina_usuario(?)";
+            
+            String sql = "select * from actividades.felimina_usuario(?) "; 
+            
             lstP.add(new Parametro(1, usuario .getCodigo()));
             ConjuntoResultado rs = AccesoDatos.ejecutaQuery(sql, lstP);
             while (rs.next()) {

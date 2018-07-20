@@ -25,9 +25,19 @@ public class Reportes {
         Connection con = null;
         con = DriverManager.getConnection("jdbc:postgresql://localhost:5433/proyecto_db","tutorias","123");
         JasperReport reporte = null;
-        reporte = (JasperReport) JRLoader.loadObjectFromFile("C:\\Users\\USER\\Documents\\NetBeansProjects\\quinto_proyecto\\src\\reportes\\Roles.jasper");
+        reporte = (JasperReport) JRLoader.loadObjectFromFile("C:\\Users\\USER\\Documents\\NetBeansProjects\\ProyectoQuinto\\src\\reportes\\Roles.jasper");
         JasperPrint print = JasperFillManager.fillReport(reporte , null, con);
-        JasperViewer ver = new JasperViewer(print);
+        JasperViewer ver = new JasperViewer(print,false);
+        ver.setTitle("Rol");
+        ver.setVisible(true);
+    }
+    public void ReportePeriodo () throws SQLException, JRException{
+        Connection con = null;
+        con = DriverManager.getConnection("jdbc:postgresql://localhost:5433/proyecto_db","tutorias","123");
+        JasperReport reporte = null;
+        reporte = (JasperReport) JRLoader.loadObjectFromFile("C:\\Users\\USER\\Documents\\NetBeansProjects\\ProyectoQuinto\\src\\reportes\\Periodos.jasper");
+        JasperPrint print = JasperFillManager.fillReport(reporte , null, con);
+        JasperViewer ver = new JasperViewer(print,false);
         ver.setTitle("Rol");
         ver.setVisible(true);
     }

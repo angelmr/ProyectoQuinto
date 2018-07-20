@@ -66,19 +66,17 @@ public class FrmMenuRol extends javax.swing.JFrame {
         txtCodigoBuscar = new javax.swing.JTextField();
         txtCodigo_modulo = new javax.swing.JTextField();
         lblDatosCurso = new javax.swing.JLabel();
-        btnListar = new javax.swing.JButton();
         lblCodigo = new javax.swing.JLabel();
         btnNuevo = new javax.swing.JButton();
         lblDescripcion = new javax.swing.JLabel();
         txtCodigo = new javax.swing.JTextField();
         txtDescripcion = new javax.swing.JTextField();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        TablaListarRoles = new javax.swing.JTable();
         btnBuscar = new javax.swing.JButton();
         btnGenerarReporte = new javax.swing.JButton();
         btnLista = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Rol de Tutorias");
 
         lblNombre.setText("Nombre:");
 
@@ -102,15 +100,8 @@ public class FrmMenuRol extends javax.swing.JFrame {
 
         lblBuscador.setText("Código a buscar:");
 
-        lblDatosCurso.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lblDatosCurso.setText("Informacion del rol");
-
-        btnListar.setText("Listar");
-        btnListar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnListarActionPerformed(evt);
-            }
-        });
+        lblDatosCurso.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblDatosCurso.setText("Datos del rol");
 
         lblCodigo.setText("Código:");
 
@@ -124,25 +115,6 @@ public class FrmMenuRol extends javax.swing.JFrame {
         lblDescripcion.setText("Descripción:");
 
         txtCodigo.setEnabled(false);
-
-        TablaListarRoles.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Codigo", "Nombre", "Descripcion", "Estado", "Codigo modulo"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        TablaListarRoles.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
-        jScrollPane3.setViewportView(TablaListarRoles);
 
         btnBuscar.setText("Buscar");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -158,7 +130,7 @@ public class FrmMenuRol extends javax.swing.JFrame {
             }
         });
 
-        btnLista.setText("Lista");
+        btnLista.setText("Listar");
         btnLista.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnListaActionPerformed(evt);
@@ -169,65 +141,58 @@ public class FrmMenuRol extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnNuevo, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(41, 41, 41)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblNombre)
+                                    .addComponent(lblDescripcion)
+                                    .addComponent(lblEstado)
+                                    .addComponent(lblCodigo_modulo)
+                                    .addComponent(lblCodigo))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtNombre)
+                                .addComponent(txtDescripcion)
+                                .addComponent(txtEstado)
+                                .addComponent(txtCodigo_modulo, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnEliminar)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnModificar)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnLista)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnGenerarReporte))
+                            .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(76, 76, 76)
                         .addComponent(lblBuscador)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtCodigoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnBuscar))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblDatosCurso)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(67, 67, 67)
-                                .addComponent(lblCodigo)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(20, 20, 20)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(lblNombre)
-                                            .addComponent(lblDescripcion)
-                                            .addComponent(lblEstado)
-                                            .addComponent(lblCodigo_modulo)))
-                                    .addComponent(btnNuevo, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(txtNombre)
-                                        .addComponent(txtDescripcion)
-                                        .addComponent(txtEstado)
-                                        .addComponent(txtCodigo_modulo, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btnEliminar)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(btnModificar)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(btnListar)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(btnGenerarReporte)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnLista)))))))
-                .addContainerGap(341, Short.MAX_VALUE))
+                        .addGap(33, 33, 33)
+                        .addComponent(lblDatosCurso)))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addContainerGap(26, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBuscar)
                     .addComponent(lblBuscador)
                     .addComponent(txtCodigoBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(lblDatosCurso)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblDatosCurso)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCodigo)
                     .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -251,12 +216,10 @@ public class FrmMenuRol extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnModificar)
                     .addComponent(btnEliminar)
-                    .addComponent(btnListar)
                     .addComponent(btnNuevo)
                     .addComponent(btnGenerarReporte)
                     .addComponent(btnLista))
-                .addGap(18, 18, Short.MAX_VALUE)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         pack();
@@ -305,22 +268,6 @@ public class FrmMenuRol extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
-    private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
-        DefaultTableModel modelo = (DefaultTableModel) TablaListarRoles.getModel();               
-        ArrayList<Rol> lista = new ArrayList<>();
-        try {
-            FRol frol = new FRol();
-            lista = frol.ObtenerRoles();            
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage(),"Error", 
-                    JOptionPane.ERROR_MESSAGE);
-        }
-        for(Rol r : lista){
-            modelo.addRow(new Object[]{ r.getCodigo(),r.getNombre(),r.getDescripcion(),
-            r.getEstado(),r.getCodigo_modulo()});           
-        }
-    }//GEN-LAST:event_btnListarActionPerformed
-
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
         if (btnNuevo.getText().compareTo("Nuevo")==0) {
             limpiarControles();
@@ -359,8 +306,7 @@ public class FrmMenuRol extends javax.swing.JFrame {
                 txtNombre.setText(rol.getNombre());
                 txtDescripcion.setText(rol.getDescripcion());
                 txtEstado.setText(Integer.toString(rol.getEstado()));
-                txtCodigo_modulo.setText(Integer.toString(rol.getCodigo_modulo()));
-                
+                txtCodigo_modulo.setText(Integer.toString(rol.getCodigo_modulo()));              
             }
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "Error al buscar el rol!!",
@@ -371,7 +317,7 @@ public class FrmMenuRol extends javax.swing.JFrame {
     private void btnGenerarReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarReporteActionPerformed
         try {
             Reportes reporte = new Reportes();
-            reporte.ReporteRol();
+            reporte.ReporteRol();            
             }catch (JRException ex) {
             Logger.getLogger(Reportes.class.getName()).log(Level.SEVERE, null , ex);
             }catch (SQLException ex){
@@ -381,12 +327,9 @@ public class FrmMenuRol extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGenerarReporteActionPerformed
 
     private void btnListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListaActionPerformed
-        /*FrmListaRol obj=new FrmListaRol();
-        Listar.setVisible(true);
-        obj.setVisible(true);
-        dispose();*/
         frm.setVisible(true);
-        frm.Listar();
+        frm.ListarRol();
+        
     }//GEN-LAST:event_btnListaActionPerformed
 
     /**
@@ -426,15 +369,12 @@ public class FrmMenuRol extends javax.swing.JFrame {
     }
     Rol rol;
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable TablaListarRoles;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGenerarReporte;
     private javax.swing.JButton btnLista;
-    private javax.swing.JButton btnListar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnNuevo;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblBuscador;
     private javax.swing.JLabel lblCodigo;
     private javax.swing.JLabel lblCodigo_modulo;
